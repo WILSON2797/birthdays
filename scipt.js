@@ -3,7 +3,7 @@
 ================================================ */
 const CONFIG = {
     name: "Yenni Martha Nainggolan",           // Nama orang yang ulang tahun
-    date: "1 April 2025",     // Tanggal ulang tahun
+    date: "1 April 2026",     // Tanggal ulang tahun
     message: `Sayang.. Selamat Ulang Tahun ya, Pertama sekali Semoga Tuhan Memberikan kesehatan, Panjang umur Serta Rejeki yang melimpah Dan Segala Impian kamu Yang Belum tercapai Semoga tuhan mengabulkannya nya ya Sayang. 🌸\nJangan pernah ragu sama diri kamu sendiri. Kamu lebih kuat dari yang kamu kira, dan lebih hebat dari yang kamu bayangkan , Aku percaya sama kamu, bahkan di saat kamu belum percaya sama dirimu sendiri. Terus melangkah, aku akan selalu ada Mendukungmu 💪❤️\n\nSemoga di usiamu yang baru ini, langkahmu semakin ringan, impianmu semakin dekat, dan hatimu selalu dipenuhi kebahagiaan. Kamu layak mendapatkan semua keindahan yang dunia bisa berikan. 💖\n\nSelamat Ulang Tahun, sayangku. Semoga kebahagiaanmu tak pernah habis. God Bless You. 🎂✨`,
     balloonEmojis: ["🎈", "🎀", "💜", "💖", "🌸", "⭐", "🦋", "🌈"],
 };
