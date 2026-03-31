@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Ulang Tahun 🎂</title>
+
+    <!-- Google Fonts: Playfair Display + Nunito -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Canvas untuk efek bintang latar & confetti -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- ==========================================
+     LAYAR PEMBUKA
+========================================== -->
+    <section id="openingScreen">
+        <h1>Ada sesuatu untukmu ✨</h1>
+        <p>Tekan tombol di bawah untuk membukanya</p>
+        <button id="btnOpen" onclick="startBirthday()">Klik Aku 🎁</button>
+    </section>
+
+    <!-- ==========================================
+     LAYAR ULANG TAHUN
+========================================== -->
+    <section id="birthdayScreen">
+        <div class="card">
+
+            <!-- Emoji kue -->
+            <span class="cake-emoji">🎂</span>
+
+            <!-- Bintang dekoratif -->
+            <div class="stars-row">✨ 🌟 ✨ 🌟 ✨</div>
+
+            <!-- Nama & tanggal -->
+            <div class="birthday-name" id="bdayName"></div>
+            <div class="birthday-date" id="bdayDate"></div>
+
+            <div class="divider"><span class="badge">💌 Pesan Spesial</span></div>
+
+            <!-- Teks ucapan (diisi oleh efek ketikan) -->
+            <p id="typedMessage"><span class="cursor"></span></p>
+
+            <div class="divider">🎉</div>
+
+            <!-- Tombol replay -->
+            <button id="btnReplay" onclick="replayAll()">🔄 Ulangi Lagi</button>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+     AUDIO ULANG TAHUN (opsional)
+     Ganti src dengan file .mp3 milikmu
+========================================== -->
+    <audio id="bdayMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+<script src="scipt.js"></script>
+</body>
+
+</html>

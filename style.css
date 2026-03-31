@@ -1,0 +1,292 @@
+    /* =============================================
+       CSS VARIABLES — tema warna & font utama
+    ============================================= */
+    :root {
+      --pink:    #ff6eb4;
+      --purple:  #a855f7;
+      --blue:    #60a5fa;
+      --soft:    #fce7f3;
+      --gold:    #fbbf24;
+      --white:   #ffffff;
+      --dark:    #1e0535;
+      --radius:  1.5rem;
+      --font-display: 'Playfair Display', serif;
+      --font-body:    'Nunito', sans-serif;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* =============================================
+       CANVAS UNTUK CONFETTI & BINTANG LATAR
+    ============================================= */
+    #bgCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =============================================
+       HALAMAN 1 — LAYAR PEMBUKA
+    ============================================= */
+    #openingScreen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      background: radial-gradient(ellipse at 50% 60%, #2d0b5e 0%, #1e0535 70%);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    /* Judul pembuka */
+    #openingScreen h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 3rem);
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 30px var(--pink);
+    }
+
+    #openingScreen p {
+      color: #d8b4fe;
+      font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+      margin-bottom: 2.8rem;
+      text-align: center;
+    }
+
+    /* Tombol utama */
+    #btnOpen {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 1rem 2.8rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: var(--white);
+      box-shadow: 0 0 30px rgba(255,110,180,0.5), 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #btnOpen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2));
+      border-radius: inherit;
+    }
+
+    #btnOpen:hover  { transform: scale(1.07); box-shadow: 0 0 50px rgba(255,110,180,0.7); }
+    #btnOpen:active { transform: scale(0.97); }
+
+    /* Animasi keluar layar pembuka */
+    #openingScreen.hide {
+      opacity: 0;
+      transform: scale(1.15);
+      pointer-events: none;
+    }
+
+    /* =============================================
+       HALAMAN 2 — KONTEN UCAPAN ULANG TAHUN
+    ============================================= */
+    #birthdayScreen {
+      position: relative;
+      z-index: 5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 3rem 1.5rem 5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease 0.5s, transform 0.9s ease 0.5s;
+      pointer-events: none;
+    }
+
+    #birthdayScreen.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    /* Kartu utama */
+    .card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      padding: clamp(1.8rem, 5vw, 3.5rem);
+      max-width: 680px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 60px rgba(168,85,247,0.15);
+    }
+
+    /* Emoji kue besar */
+    .cake-emoji {
+      font-size: clamp(3.5rem, 10vw, 6rem);
+      display: block;
+      animation: bounce 1.5s infinite ease-in-out;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-14px) rotate(3deg); }
+    }
+
+    /* Nama orang */
+    .birthday-name {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      background: linear-gradient(135deg, var(--pink), var(--gold), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .birthday-date {
+      font-size: 0.9rem;
+      color: #c4b5fd;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Teks ucapan dengan efek ketikan */
+    #typedMessage {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: #f3e8ff;
+      line-height: 1.85;
+      min-height: 8rem;
+      text-align: justify;
+      margin-bottom: 2rem;
+    }
+
+    /* Cursor kedip-kedip */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--pink);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+    /* Divider dekoratif */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 1.6rem 0;
+      color: #c4b5fd;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c4b5fd, transparent);
+    }
+
+    /* Badge tanggal */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Tombol replay */
+    #btnReplay {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.75rem 2.2rem;
+      border: 2px solid var(--purple);
+      border-radius: 9999px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--white);
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    #btnReplay:hover {
+      background: var(--purple);
+      transform: scale(1.05);
+    }
+
+    /* =============================================
+       BALON
+    ============================================= */
+    .balloon {
+      position: fixed;
+      bottom: -160px;
+      font-size: 3rem;
+      animation: floatUp linear forwards;
+      z-index: 4;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0)   rotate(0deg);   opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(15deg); opacity: 0; }
+    }
+
+    /* =============================================
+       BINTANG KECIL DI KARTU
+    ============================================= */
+    .stars-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%,100% { filter: brightness(1); }
+      50%     { filter: brightness(1.8) drop-shadow(0 0 8px gold); }
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 480px) {
+      .card { padding: 1.5rem 1.2rem; }
+    }
